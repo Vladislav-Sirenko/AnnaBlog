@@ -1,0 +1,25 @@
+@media (max-width: 767px) {
+    /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */
+    .body-content {
+        padding-top: 50px;
+    }
+}
+
+.container-fluid {
+    /* background-color: rgba(253, 224, 57, 0.603); */
+    background: url(../assets/img/ann_blog9.jpg)no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100%;
+    /* background-color: rgba(248, 211, 4, 0.733); */
+    min-height: 100vh;
+    /* height: auto; */
+    /* font-family: 'Hepta Slab', serif; */
+    font-family: 'Permanent Marker', cursive;
+    margin-top: -1%;
+    border: 1px solid silver;
+    color: rgb(0, 0, 0);
+    /* Современные браузеры */
+    /* transition: background-color 2s linear; */
+}

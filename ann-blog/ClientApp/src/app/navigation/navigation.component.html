@@ -1,0 +1,46 @@
+<div class="hamburger-menu">
+    <input id="menu__toggle" type="checkbox" />
+    <label class="menu__btn" for="menu__toggle">
+          <span></span>
+        </label>
+    <ul class="menu__box">
+        <a class="menu__item " routerLink="">
+            <li> ГОЛОВНА
+            </li>
+        </a>
+        <a class="menu__item " routerLink="/feedBack">
+            <li> ПОЗНАЙОМИМОСЬ
+            </li>
+        </a>
+        <a class="menu__item" routerLink="/projects">
+            <li>КОНТАКТИ</li>
+        </a>
+
+        <a class="menu__item" routerLink="/certificate">
+            <li>СЕРТИФІКАТИ</li>
+        </a>
+        <p class="menu__item" (click)="toogleMenu()" style="cursor: pointer">
+            <li>БЛОГ <i class="fa fa-chevron-down" aria-hidden="true"></i></li>
+        </p>
+        <a *ngIf="toogle" class="menu__item" routerLink="" align="right">
+            <li>ТВОРЧЕСТВО1</li>
+        </a>
+        <a *ngIf="toogle" class="menu__item" routerLink="/about-us" align="right">
+            <li>ТВОРЧЕСТВО2</li>
+        </a>
+        <a *ngIf="toogle" class="menu__item" routerLink="/about-us" align="right">
+            <li>ТВОРЧЕСТВО3</li>
+        </a>
+        <!-- <a class="menu__item" routerLink="/about-us">
+            <li>CONTACTS</li>
+        </a> -->
+
+    </ul>
+</div>
+<div class="text-right social-media">
+
+    <a class=""><i class="fa fa-facebook fa-2x mr-5" aria-hidden="true"></i></a>
+    <a class=""><i class="fa fa-instagram fa-2x mr-5" aria-hidden="true"></i></a>
+    <a class=""><i class="fa fa-paper-plane-o fa-2x mr-5" aria-hidden="true"></i></a>
+    <a class=""><i class="fa fa-linkedin-square fa-2x mr-5" aria-hidden="true"></i></a>
+</div>

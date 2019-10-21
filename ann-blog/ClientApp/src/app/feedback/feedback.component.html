@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-4  p-5 form-group">
+
+
+            <label for="InputEmail">E-mail</label>
+            <input [(ngModel)]="email" type="email" class="form-control" placeholder="exampl@gmail.com" id="InputEmail" />
+            <label for="exampleFormControlTextarea4">Про що бажаєте поговорити?</label>
+            <textarea [(ngModel)]="text" class="form-control " id="exampleFormControlTextarea4" rows="3"></textarea>
+            <label for="InputPhone">Телефон</label>
+            <input type="tel" [(ngModel)]="phone" class="form-control" placeholder="Ваш номер телефону" id="InputPhone" />
+            <button (click)="sendFeedback()" class="btn btn-info mt-5" align="right">НАДIСЛАТИ</button>
+        </div>
+    </div>
+</div>

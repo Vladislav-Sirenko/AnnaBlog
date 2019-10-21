@@ -1,0 +1,139 @@
+#menu__toggle {
+    opacity: 0;
+}
+
+* {
+    z-index: 1;
+}
+
+
+/* стилизуем кнопку */
+
+.menu__btn {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    padding: 3px;
+    /* border: 1px solid white; */
+    /* background-color: #ffffff98; */
+    top: 25px;
+    left: 25px;
+    width: 35px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 3;
+}
+
+
+/* добавляем "гамбургер" */
+
+.menu__btn>span,
+.menu__btn>span::before,
+.menu__btn>span::after {
+    display: block;
+    position: absolute;
+    /* border: 1px solid silver; */
+    width: 100%;
+    height: 3px;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.637);
+}
+
+.menu__btn>span::before {
+    content: '';
+    top: -10px;
+}
+
+.menu__btn>span::after {
+    content: '';
+    top: 10px;
+}
+
+.menu__box {
+    display: block;
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    left: -100%;
+    width: 300px;
+    height: 100vh;
+    margin: 0;
+    padding: 70px 0 0 0;
+    list-style: none;
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.733);
+    border-right: 2px solid rgba(255, 255, 255, 0.877);
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+    color: #033E6B;
+    z-index: 2;
+}
+
+
+/* элементы меню */
+
+.menu__item {
+    display: block;
+    padding: 12px 24px;
+    color: rgba(255, 255, 255, 0.938);
+    /* font-family: 'Cinzel', serif; */
+    /* font-family: 'Rokkitt', serif; */
+    /* font-family: 'IBM Plex Serif', serif; */
+    font-family: 'Cardo', serif;
+    letter-spacing: 2px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid silver;
+    z-index: 2;
+}
+
+.menu__item:hover {
+    background-color: rgb(245, 239, 163);
+    color: rgb(54, 52, 52);
+}
+
+#menu__toggle:checked~.menu__btn>span {
+    transform: rotate(45deg);
+}
+
+#menu__toggle:checked~.menu__btn>span::before {
+    top: 0;
+    transform: rotate(0);
+    z-index: 2;
+}
+
+#menu__toggle:checked~.menu__btn>span::after {
+    top: 0;
+    z-index: 2;
+    transform: rotate(90deg);
+}
+
+#menu__toggle:checked~.menu__box {
+    visibility: visible;
+    z-index: 2;
+    left: 0;
+}
+
+.menu__btn>span,
+.menu__btn>span::before,
+.menu__btn>span::after {
+    transition-duration: .25s;
+    z-index: 2;
+}
+
+.menu__box {
+    transition-duration: .25s;
+}
+
+.menu__item {
+    transition-duration: .25s;
+}
+
+.social-media>a {
+    color: rgba(0, 0, 0, 0.637);
+    cursor: pointer;
+}
+
+.social-media>a:hover {
+    color: rgba(199, 199, 199, 0.938);
+}
