@@ -1,8 +1,11 @@
+using ann_blog.Context;
+using ann_blog.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Services;
@@ -29,6 +32,10 @@ namespace ann_blog
                 configuration.RootPath = "ClientApp/dist";
             });
             services.AddTransient<IEmailService, EmailService>();
+            services.AddTransient<ICertificateService, CertificateService>();
+            services.AddDbContext<BlogContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
+            services.BuildServiceProvider().GetService<BlogContext>().Database.Migrate();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

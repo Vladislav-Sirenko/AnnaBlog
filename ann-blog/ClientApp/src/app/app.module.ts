@@ -17,6 +17,7 @@ import { AboutMeComponent } from './about-me/about-me.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { CertificateComponent } from './certificate/certificate.component';
 import { ContactService } from './contact.service';
+import { CertificateService } from './certificate.service';
 
 
 @NgModule({
@@ -54,7 +55,7 @@ import { ContactService } from './contact.service';
 
     ])
   ],
-  providers: [ContactService],
+  providers: [ContactService, CertificateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

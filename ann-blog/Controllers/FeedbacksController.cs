@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
-using Models;
+using ann_blog.Models;
+using ann_blog.Services;
 using Services;
 
 namespace ann_blog.Controllers
@@ -15,10 +18,13 @@ namespace ann_blog.Controllers
     [ApiController]
     public class FeedbacksController : ControllerBase
     {
-        private IEmailService _emailService;
-        public FeedbacksController(IEmailService emailService)
+        private readonly IEmailService _emailService;
+        private readonly ICertificateService _certificateService;
+
+        public FeedbacksController(IEmailService emailService, ICertificateService certificateService)
         {
             _emailService = emailService;
+            _certificateService = certificateService;
         }
         // GET: api/Feedbacks
         [HttpGet]
@@ -36,7 +42,7 @@ namespace ann_blog.Controllers
 
         // POST: api/Feedbacks
         [HttpPost]
-        public  void Post([FromBody] FeedbackModel model)
+        public void Post([FromBody] FeedbackModel model)
         {
             const string WEBSERVICE_URL = "https://chatapi.viber.com/pa/send_message";
             try
@@ -44,15 +50,15 @@ namespace ann_blog.Controllers
                 var webRequest = System.Net.WebRequest.Create(WEBSERVICE_URL);
                 if (webRequest != null)
                 {
-                    string stringData = "{\r\n   \"receiver\":\"f2AvTANRh29BtxyjIacLHQ==\",\r\n   \"min_api_version\":1,\r\n   \"sender\":{\r\n      \"name\":\"John McClane\",\r\n      \"avatar\":\"http://avatar.example.com\"\r\n   },\r\n   \"tracking_data\":\"tracking data\",\r\n   \"type\":\"text\",\r\n   \"text\":\"AAAA\"\r\n}"; // place body here
+                    string stringData = "{\r\n   \"receiver\":\"IarQYwoA227TTY0wapIFPw==\",\r\n   \"min_api_version\":1,\r\n   \"sender\":{\r\n      \"name\":\"John McClane\",\r\n      \"avatar\":\"http://avatar.example.com\"\r\n   },\r\n   \"tracking_data\":\"tracking data\",\r\n   \"type\":\"text\",\r\n   \"text\":\"AAAA\"\r\n}"; // place body here
 
-                    var data = Encoding.Default.GetBytes(stringData.Replace("AAAA","Email:" + model.Email + " Phone:" + model.Phone + " Text:" + model.Text)); // note: choose appropriate encoding
+                    var data = Encoding.Default.GetBytes(stringData.Replace("AAAA", "Email:" + model.Email + " Phone:" + model.Phone + " Text:" + model.Text)); // note: choose appropriate encoding
                     webRequest.Method = "POST";
                     webRequest.Timeout = 12000;
                     webRequest.ContentType = "application/json";
                     webRequest.Headers.Add("X-Viber-Auth-Token", "4a641980da27d6e3-73cca053d4058942-48b24974f1fc40c2");
                     webRequest.ContentLength = data.Length;
-                    var newStream = webRequest.GetRequestStream(); // get a ref to the request body so it can be modified
+                    var newStream = webRequest.GetRequestStream();
                     newStream.Write(data, 0, data.Length);
                     newStream.Close();
 
@@ -74,6 +80,12 @@ namespace ann_blog.Controllers
             }
         }
 
+        [HttpGet("[action]")]
+        public IEnumerable<Certificate> GetCertificates()
+        {
+            return _certificateService.GetAll();
+        }
+
         // PUT: api/Feedbacks/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
@@ -84,6 +96,26 @@ namespace ann_blog.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+        [HttpPost("[action]")]
+        public HttpResponseMessage UploadFile(int id)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            var files = HttpContext.Request.Form.Files;
+            if (files.Count > 0)
+            {
+                foreach (IFormFile fil in files)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        fil.CopyTo(ms);
+                        var fileBytes = ms.ToArray();
+                        _certificateService.AddImage(Convert.ToBase64String(fileBytes));
+                    }
+                }
+            }
+
+            return response;
         }
     }
 }
