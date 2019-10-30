@@ -9,5 +9,6 @@ namespace ann_blog.Services
     {
         List<Certificate> GetAll();
         void AddImage(string toBase64String);
+        void Remove(int id);
     }
 }

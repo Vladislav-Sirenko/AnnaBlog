@@ -19,5 +19,15 @@ namespace ann_blog.Services
             _context.Certificates.Add(new Certificate() { Code = image });
             _context.SaveChanges();
         }
+
+        public void Remove(int id)
+        {
+            var item = _context.Certificates.FirstOrDefault(x => x.Id == id);
+            if (item != null)
+            {
+                _context.Remove(item);
+                _context.SaveChanges();
+            }
+        }
     }
 }

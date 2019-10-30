@@ -19,25 +19,16 @@ namespace ann_blog.Controllers
     public class FeedbacksController : ControllerBase
     {
         private readonly IEmailService _emailService;
-        private readonly ICertificateService _certificateService;
 
         public FeedbacksController(IEmailService emailService, ICertificateService certificateService)
         {
             _emailService = emailService;
-            _certificateService = certificateService;
         }
         // GET: api/Feedbacks
         [HttpGet]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
-        }
-
-        // GET: api/Feedbacks/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
         }
 
         // POST: api/Feedbacks
@@ -80,12 +71,6 @@ namespace ann_blog.Controllers
             }
         }
 
-        [HttpGet("[action]")]
-        public IEnumerable<Certificate> GetCertificates()
-        {
-            return _certificateService.GetAll();
-        }
-
         // PUT: api/Feedbacks/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
@@ -97,25 +82,6 @@ namespace ann_blog.Controllers
         public void Delete(int id)
         {
         }
-        [HttpPost("[action]")]
-        public HttpResponseMessage UploadFile(int id)
-        {
-            HttpResponseMessage response = new HttpResponseMessage();
-            var files = HttpContext.Request.Form.Files;
-            if (files.Count > 0)
-            {
-                foreach (IFormFile fil in files)
-                {
-                    using (var ms = new MemoryStream())
-                    {
-                        fil.CopyTo(ms);
-                        var fileBytes = ms.ToArray();
-                        _certificateService.AddImage(Convert.ToBase64String(fileBytes));
-                    }
-                }
-            }
-
-            return response;
-        }
+       
     }
 }

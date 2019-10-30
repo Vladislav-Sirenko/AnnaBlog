@@ -12,13 +12,17 @@ export class CertificateService {
     this._baseUrl = baseUrl;
   }
   getAll() {
-    return this.http.get<Certificate[]>(this._baseUrl + 'api/Feedbacks/GetCertificates');
+    return this.http.get<Certificate[]>(this._baseUrl + 'api/Certificate');
+  }
+  remove(id: number) {
+    // tslint:disable-next-line:quotemark
+    return this.http.delete(this._baseUrl + "api/Certificate/" + id);
   }
 
   postFile(fileToUpload: File) {
-    const endpoint = this._baseUrl + 'api/Feedbacks/UploadFile';
+    const endpoint = this._baseUrl + 'api/Certificate';
     const formData: FormData = new FormData();
-      formData.append('fileKey' + fileToUpload.name, fileToUpload, fileToUpload.name);
+    formData.append('fileKey' + fileToUpload.name, fileToUpload, fileToUpload.name);
     return this.http
       .post(endpoint, formData);
     // .catch((e) => this.handleError(e));

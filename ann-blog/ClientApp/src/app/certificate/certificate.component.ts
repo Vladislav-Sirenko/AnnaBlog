@@ -16,9 +16,7 @@ export class CertificateComponent implements OnInit {
 
   ngOnInit() {
     this.fileToUpload = null;
-    this.service.getAll().subscribe((certificates) => {
-      this.certificates = certificates;
-    });
+    this.getAll();
   }
   handleFileInput(files: FileList) {
     this.fileToUpload = files.item(0);
@@ -26,8 +24,17 @@ export class CertificateComponent implements OnInit {
   postFile() {
     this.service.postFile(this.fileToUpload).subscribe(() => {
       alert('Your file has been succesfully added');
+      this.fileToUpload = null;
+      this.myInputVariable.nativeElement.value = '';
+      this.getAll();
     });
-    this.fileToUpload = null;
+
+  }
+  remove(id: number) {
+    this.service.remove(id).subscribe();
+    this.certificates.splice(this.certificates.findIndex(x => x.id === id));
+  }
+  getAll() {
     this.service.getAll().subscribe((certificates) => {
       this.certificates = certificates;
     });

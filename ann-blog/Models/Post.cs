@@ -11,6 +11,6 @@ namespace ann_blog.Models
         [Key]
         public int Id { get; set; }
         public string Data { get; set; }
-        public ICollection<Photo> Feedbacks { get; set; }
+        public ICollection<Photo> Photos { get; set; }
     }
 }

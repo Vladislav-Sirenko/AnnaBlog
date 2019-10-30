@@ -2,6 +2,7 @@
     <div class="row justify-content-center mt-5">
         <div *ngFor="let item of certificates" class="col-md-3  certificate m-2 p-0">
             <img src="data:image/jpeg;base64,{{item.code}}" alt="certificate">
+            <button (click)="remove(item.id)">Remove</button>
         </div>
     </div>
 </div>
@@ -9,4 +10,4 @@
     <label for="file">Choose File</label>
     <input #myInput type="file" id="file" (change)="handleFileInput($event.target.files)">
 </div>
-<button (click)="postFile()">Upload</button>
+<button (click)="postFile()" [disabled]="!fileToUpload">Upload</button>
