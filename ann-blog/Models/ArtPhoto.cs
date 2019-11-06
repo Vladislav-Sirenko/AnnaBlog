@@ -1,0 +1,9 @@
+﻿namespace ann_blog.Models
+{
+    public class ArtPhoto
+    {
+        public int Id { get; set; }
+        public string Code { get; set; }
+        public int PostId { get; set; }
+    }
+}

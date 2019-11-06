@@ -1,8 +1,11 @@
-<div classs="container">
-    <div class="row justify-content-center mt-5">
-        <div *ngFor="let item of certificates" class="col-md-3  certificate m-2 p-0">
-            <img src="data:image/jpeg;base64,{{item.code}}" alt="certificate">
-            <button (click)="remove(item.id)">Remove</button>
+<div class="container " align="center">
+    <div class="row d-flex justify-content-center">
+        <div *ngFor="let item of certificates" class="col-md-4 photo-container mt-5">
+            <div class="photo-container-box border text-center ">
+                <img class="img img-box" src="data:image/jpeg;base64,{{item.code}}" alt="New york">
+                <figcaption class="mt-2">СЕРТИФИКАТ О ПОЛУЧЕНИИ НА ДОЛГИЙ</figcaption>
+                <button (click)="remove(item.id)">Remove</button>
+            </div>
         </div>
     </div>
 </div>

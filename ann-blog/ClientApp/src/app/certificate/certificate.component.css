@@ -12,3 +12,104 @@
     background-color: rgb(187, 247, 247);
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
+
+.picture-container {
+    background: #ccd3d7;
+    height: auto;
+}
+
+.picture {
+    height: 320px;
+    width: 320px;
+}
+
+.stack {
+    position: relative;
+    z-index: 10;
+}
+
+
+/* Стили изображений */
+
+.stack img {
+    max-width: 100%;
+    height: 250px;
+    vertical-align: bottom;
+    border: 10px solid #fff;
+    border-radius: 3px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+
+/* Создаем и организовуем контент */
+
+.stack:before,
+.stack:after {
+    content: "";
+    border-radius: 3px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border: 10px solid #fff;
+    left: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    -webkit-transition: 0.3s all ease-out;
+    -moz-transition: 0.3s all ease-out;
+    transition: 0.3s all ease-out;
+}
+
+.stack:before {
+    top: 6px;
+    left: 6px;
+    z-index: -10;
+}
+
+.stack:after {
+    top: 12px;
+    left: 12px;
+    z-index: -20;
+}
+
+.about-picture {
+    border: 3px solid rgb(255, 255, 255);
+    background-color: rgba(212, 249, 252, 0.884);
+    height: 250px;
+}
+
+.about-picture {
+    border-width: 3px;
+    padding: 10px;
+    border-style: solid;
+    border-image: linear-gradient( to bottom, rgb(153, 223, 213), rgba(0, 0, 0, 0)) 1 100%;
+}
+
+.photo-container-box {
+    height: 280px;
+    padding: 15px;
+    padding-bottom: 50px;
+    width: 290px;
+    background: src="../../assets/photo-back.jpg";
+    background-color: rgb(114, 228, 243);
+}
+
+.img-box {
+    width: 100%;
+    height: 100%;
+    border: 3px solid rgb(255, 250, 250);
+    overflow: auto;
+}
+
+figcaption {
+    font-weight: 700;
+    color: rgb(34, 34, 34)
+}

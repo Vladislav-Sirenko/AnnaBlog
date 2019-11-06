@@ -32,6 +32,7 @@ namespace ann_blog
                 configuration.RootPath = "ClientApp/dist";
             });
             services.AddTransient<IEmailService, EmailService>();
+            services.AddTransient<ITripService, TripService>();
             services.AddTransient<ICertificateService, CertificateService>();
             services.AddDbContext<BlogContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));

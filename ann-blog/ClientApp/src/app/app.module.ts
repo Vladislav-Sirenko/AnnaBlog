@@ -18,6 +18,8 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { CertificateComponent } from './certificate/certificate.component';
 import { ContactService } from './contact.service';
 import { CertificateService } from './certificate.service';
+import { TripsComponent } from './trips/trips.component';
+import { TripsService } from './trips.service';
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import { CertificateService } from './certificate.service';
     CarouselComponent,
     AboutMeComponent,
     FeedbackComponent,
-    CertificateComponent
+    CertificateComponent,
+    TripsComponent
 
   ],
   imports: [
@@ -49,13 +52,14 @@ import { CertificateService } from './certificate.service';
       { path: 'services', component: AttendanceComponent },
       { path: 'registration', component: RegistrationComponent },
       { path: 'about', component: AboutMeComponent },
+      { path: 'trips', component: TripsComponent },
       { path: 'feedBack', component: FeedbackComponent },
       { path: 'certificate', component: CertificateComponent },
       { path: '**', component: NotFoundComponent },
 
     ])
   ],
-  providers: [ContactService, CertificateService],
+  providers: [ContactService, CertificateService, TripsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
