@@ -20,6 +20,7 @@ import { ContactService } from './contact.service';
 import { CertificateService } from './certificate.service';
 import { TripsComponent } from './trips/trips.component';
 import { TripsService } from './trips.service';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 
 @NgModule({
@@ -38,7 +39,6 @@ import { TripsService } from './trips.service';
     FeedbackComponent,
     CertificateComponent,
     TripsComponent
-
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -57,7 +57,9 @@ import { TripsService } from './trips.service';
       { path: 'certificate', component: CertificateComponent },
       { path: '**', component: NotFoundComponent },
 
-    ])
+    ]),
+    InfiniteScrollModule,
+
   ],
   providers: [ContactService, CertificateService, TripsService],
   bootstrap: [AppComponent]

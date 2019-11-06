@@ -25,7 +25,7 @@ export class TripsService {
     trip.id = 0;
     return this._http.post(this._baseUrl + 'api/Trip', trip);
   }
-  getAll() {
-    return this._http.get<Trip[]>(this._baseUrl + 'api/Trip');
+  getAll(skip: number) {
+    return this._http.get<Trip[]>(this._baseUrl + 'api/Trip/' + skip);
   }
 }

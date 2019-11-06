@@ -11,6 +11,6 @@ namespace ann_blog.Services
         void Delete(Trip art);
         void Update(Trip art);
         void AddPhotosToTrip(List<TripPhoto> photo,int id);
-        List<Trip> GetAll();
+        List<Trip> GetAll(int skip);
     }
 }

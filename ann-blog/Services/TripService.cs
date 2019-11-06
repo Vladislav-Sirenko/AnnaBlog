@@ -21,12 +21,11 @@ namespace ann_blog.Services
             return trip.Id;
         }
 
-        public List<Trip> GetAll()
+        public List<Trip> GetAll(int skip)
         {
-            var trips = _context.Trips.ToList();
+            var trips = _context.Trips.Skip(skip).Take(5).ToList();
             foreach (var trip in trips)
             {
-
                 trip.Photos = _context.TripPhotos.Where(x => x.TripId == trip.Id).ToList();
             }
             return trips;

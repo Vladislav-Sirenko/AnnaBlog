@@ -15,16 +15,25 @@ export class TripsComponent implements OnInit {
   myInputVariableOne: ElementRef;
   @ViewChild('myInputTwo')
   myInputVariableTwo: ElementRef;
+  private noOfItemsToShowInitially = 5;
+  // itemsToLoad - number of new items to be displayed
+  private itemsToLoad = 5;
   fileToUpload: File = null;
   fileToUpload1: File = null;
   fileToUpload2: File = null;
   files: File[] = [];
   thecontents: string;
-  trips$: Observable<Trip[]>;
+  trips: Trip[] = [];
+  itemsToShow: Trip[] = [];
+  // No need to call onScroll if full list has already been displayed
+  public isFullListDisplayed = false;
   constructor(private service: TripsService) { }
 
   ngOnInit() {
-    this.trips$ = this.service.getAll();
+    this.service.getAll(0).subscribe(trips => {
+      this.trips = trips;
+      this.itemsToShow = this.trips;
+    });
   }
   handleFileInput(files: FileList) {
     this.fileToUpload = files.item(0);
@@ -32,11 +41,19 @@ export class TripsComponent implements OnInit {
   }
 
   post() {
-    if (this.thecontents) {
-      this.service.postTrip(new Trip(this.thecontents, null, null)).subscribe((id: number) => {
-        this.service.postFile(this.files, id).subscribe();
-        this.trips$ = this.service.getAll();
-      });
+    for (let index = 0; index < 100; index++) {
+      if (this.thecontents) {
+        this.service.postTrip(new Trip(this.thecontents, null, null)).subscribe((id: number) => {
+          this.service.postFile(this.files, id).subscribe();
+        });
+      }
     }
+  }
+  onScroll() {
+    this.service.getAll(this.noOfItemsToShowInitially).subscribe(trips => {
+      this.trips = trips;
+      this.itemsToShow.push.apply(this.itemsToShow, this.trips);
+    });
+    this.noOfItemsToShowInitially += this.itemsToLoad;
   }
 }

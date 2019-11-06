@@ -22,10 +22,10 @@ namespace ann_blog.Controllers
             _tripService = service;
         }
         // GET: api/Trip
-        [HttpGet]
-        public List<Trip> Get()
+        [HttpGet("{id}")]
+        public List<Trip> Get(int id)
         {
-            return _tripService.GetAll();
+            return _tripService.GetAll(id);
         }
 
         // POST: api/Trip
