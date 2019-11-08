@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ann_blog.Models;
+using ann_blog.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,17 +13,23 @@ namespace ann_blog.Controllers
     [ApiController]
     public class PostController : ControllerBase
     {
-        // GET: api/Post
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private IPostService _postService;
+        public PostController(IPostService service)
         {
-            return new string[] { "value1", "value2" };
+            _postService = service;
+        }
+        // GET: api/Post
+        [HttpGet("{id}")]
+        public List<Post> Get(int id)
+        {
+            return _postService.GetAll(id);
         }
 
         // POST: api/Post
         [HttpPost]
-        public void Post([FromBody] string value)
+        public int Post([FromBody] Post post)
         {
+            return _postService.Add(post);
         }
 
         // PUT: api/Post/5

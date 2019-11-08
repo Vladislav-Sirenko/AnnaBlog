@@ -1,7 +1,7 @@
 <div class="title">
-    <h2>
-        МОИ ПУТЕШЕСТВИЯ
-    </h2>
+    <p class="trips-title">
+        MY TRIPS
+    </p>
 </div>
 <div class="admin-toggle" (click)="admin_toggle()">
     <div class="btn btn-primary">
@@ -15,9 +15,9 @@
             <Br>
             <textarea [(ngModel)]="thecontents" rows="7" cols="55"></textarea>
             <label for="file"><h5>Загрузить Фото</h5></label>
-            <input #myInput type="file" class="input" id="file" (change)="handleFileInput($event.target.files)">
-            <input #myInputOne type="file" class="input" id="file" (change)="handleFileInput1($event.target.files)">
-            <input #myInputTwo type="file" class="input" id="file" (change)="handleFileInput2($event.target.files)">
+            <input #myInput type="file" class="input mt-3" id="file" (change)="handleFileInput($event.target.files)">
+            <input #myInputOne type="file" class="input mt-3" id="file" (change)="handleFileInput1($event.target.files)">
+            <input #myInputTwo type="file" class="input mt-3" id="file" (change)="handleFileInput2($event.target.files)">
             <button class="btn btn-success mt-3 ml-2" (click)="post()" [disabled]="!fileToUpload">Создать</button>
     </div>
 </div>
@@ -27,19 +27,15 @@
 <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [infiniteScrollDisabled]="isFullListDisplayed" [scrollWindow]="false">
     <div *ngFor="let item of itemsToShow" class="container-fluide picture-container">
         <div class="container">
-            <div class="row ">
-                <div col-6>
-                    <p>{{ item.date ? item.date.split('T')[0] + ' ' + item.date.split('T')[1].substring(0,8) : ''}}</p>
-                </div>
-            </div>
+
             <div class="row mt-5 mb-5 justify-content-center">
                 <div class="col-md-6">
                     <div class="picture">
                         <div class="stackone">
                             <div class="stack">
-                                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                <div id="myCarousel-{{item.id}}" class="carousel slide" data-ride="carousel">
 
-                                    <div class="carousel-inner">
+                                    <div *ngFor="let photo of item.photos" class="carousel-inner">
                                         <div class="item active">
                                             <img src="data:image/jpeg;base64,{{item.photos[0].code}}">
                                         </div>
@@ -49,11 +45,11 @@
                                     </div>
 
                                     <!-- Left and right controls -->
-                                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                    <a class="left carousel-control" href="#myCarousel-{{item.id}}" data-slide="prev">
                                         <span class="glyphicon glyphicon-chevron-left"></span>
                                         <span class="sr-only">Previous</span>
                                     </a>
-                                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                    <a class="right carousel-control" href="#myCarousel-{{item.id}}" data-slide="next">
                                         <span class="glyphicon glyphicon-chevron-right"></span>
                                         <span class="sr-only">Next</span>
                                     </a>
@@ -65,9 +61,12 @@
                 </div>
                 <div class="col-md-6">
                     <div class="about-picture">
-                        <p>
+                        <p class="about-picture-text">
                             {{item.data}}
                         </p>
+                        <div class="about-picture-date">
+                            <p>{{ item.date ? item.date.split('T')[0] + ' ' + item.date.split('T')[1].substring(0,8) : ''}}</p>
+                        </div>
                     </div>
                 </div>
             </div>

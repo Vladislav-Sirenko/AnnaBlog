@@ -1,7 +1,7 @@
 <div class="title">
-    <h2>
-        МОИ КАРТИНЫ
-    </h2>
+    <p class="trips-title">
+        MY ART
+    </p>
 </div>
 <div class="admin-toggle" (click)="admin_toggle()">
     <div class="btn btn-primary">
@@ -27,17 +27,13 @@
 <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [infiniteScrollDisabled]="isFullListDisplayed" [scrollWindow]="false">
     <div *ngFor="let item of itemsToShow" class="container-fluide picture-container">
         <div class="container">
-            <div class="row ">
-                <div col-6>
-                    <p>{{ item.date ? item.date.split('T')[0] + ' ' + item.date.split('T')[1].substring(0,8) : ''}}</p>
-                </div>
-            </div>
+
             <div class="row mt-5 mb-5 justify-content-center">
                 <div class="col-md-6">
                     <div class="picture">
                         <div class="stackone">
                             <div class="stack">
-                                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                <div id="myCarousel-{{item.id}}" class="carousel slide" data-ride="carousel">
                                     <!-- Indicators -->
 
                                     <!-- Wrapper for slides -->
@@ -51,11 +47,11 @@
                                     </div>
 
                                     <!-- Left and right controls -->
-                                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                    <a class="left carousel-control" href="#myCarousel-{{item.id}}" data-slide="prev">
                                         <span class="glyphicon glyphicon-chevron-left"></span>
                                         <span class="sr-only">Previous</span>
                                     </a>
-                                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                    <a class="right carousel-control" href="#myCarousel-{{item.id}}" data-slide="next">
                                         <span class="glyphicon glyphicon-chevron-right"></span>
                                         <span class="sr-only">Next</span>
                                     </a>
@@ -68,9 +64,13 @@
                 </div>
                 <div class="col-md-6">
                     <div class="about-picture">
+
                         <p>
                             {{item.data}}
                         </p>
+                        <div>
+                            <p class="about-picture-date">{{ item.date ? item.date.split('T')[0] + ' ' + item.date.split('T')[1].substring(0,8) : ''}}</p>
+                        </div>
                     </div>
                 </div>
             </div>

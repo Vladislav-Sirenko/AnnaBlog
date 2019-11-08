@@ -23,6 +23,8 @@ import { TripsService } from './trips.service';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ArtsComponent } from './arts/arts.component';
 import { ArtsService } from './arts.service';
+import { PostsComponent } from './posts/posts.component';
+import { PostsService } from './posts.service';
 
 
 @NgModule({
@@ -41,7 +43,8 @@ import { ArtsService } from './arts.service';
     FeedbackComponent,
     CertificateComponent,
     TripsComponent,
-    ArtsComponent
+    ArtsComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -57,6 +60,7 @@ import { ArtsService } from './arts.service';
       { path: 'about', component: AboutMeComponent },
       { path: 'trips', component: TripsComponent },
       { path: 'arts', component: ArtsComponent },
+      { path: 'posts', component: PostsComponent },
       { path: 'feedBack', component: FeedbackComponent },
       { path: 'certificate', component: CertificateComponent },
       { path: '**', component: NotFoundComponent },
@@ -65,7 +69,7 @@ import { ArtsService } from './arts.service';
     InfiniteScrollModule,
 
   ],
-  providers: [ContactService, CertificateService, TripsService, ArtsService],
+  providers: [ContactService, CertificateService, TripsService, ArtsService, PostsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

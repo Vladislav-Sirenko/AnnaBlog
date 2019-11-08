@@ -12,7 +12,6 @@ namespace ann_blog.Context
         public BlogContext(DbContextOptions<BlogContext> options) : base(options)
         {
         }
-        public DbSet<Photo> Photos { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Certificate> Certificates { get; set; }
