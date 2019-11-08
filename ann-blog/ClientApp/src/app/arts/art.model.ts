@@ -1,9 +1,9 @@
-import { TripPhoto } from './tripPhoto.model';
+import { ArtPhoto } from './artPhoto.model';
 
-export class Trip {
+export class Art {
     id: number;
     data: string;
-    photos: Array<TripPhoto> = [];
+    photos: Array<ArtPhoto> = [];
     date: Date;
     constructor(data: string) {
         this.data = data;

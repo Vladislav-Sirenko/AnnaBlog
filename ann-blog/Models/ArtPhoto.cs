@@ -4,6 +4,6 @@
     {
         public int Id { get; set; }
         public string Code { get; set; }
-        public int PostId { get; set; }
+        public int ArtId { get; set; }
     }
 }

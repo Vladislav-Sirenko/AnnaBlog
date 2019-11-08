@@ -1,6 +1,6 @@
 <div class="title">
     <h2>
-        МОИ ПУТЕШЕСТВИЯ
+        МОИ КАРТИНЫ
     </h2>
 </div>
 <div class="admin-toggle" (click)="admin_toggle()">
@@ -38,7 +38,9 @@
                         <div class="stackone">
                             <div class="stack">
                                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                    <!-- Indicators -->
 
+                                    <!-- Wrapper for slides -->
                                     <div class="carousel-inner">
                                         <div class="item active">
                                             <img src="data:image/jpeg;base64,{{item.photos[0].code}}">
@@ -58,6 +60,7 @@
                                         <span class="sr-only">Next</span>
                                     </a>
                                 </div>
+
 
                             </div>
                         </div>

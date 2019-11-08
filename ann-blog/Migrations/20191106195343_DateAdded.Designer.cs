@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ann_blog.Context;
 
 namespace annblog.Migrations
 {
     [DbContext(typeof(BlogContext))]
-    partial class BlogContextModelSnapshot : ModelSnapshot
+    [Migration("20191106195343_DateAdded")]
+    partial class DateAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,9 +59,11 @@ namespace annblog.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ArtId");
+                    b.Property<int?>("ArtId");
 
                     b.Property<string>("Code");
+
+                    b.Property<int>("PostId");
 
                     b.HasKey("Id");
 
@@ -147,8 +151,7 @@ namespace annblog.Migrations
                 {
                     b.HasOne("ann_blog.Models.Art")
                         .WithMany("Photos")
-                        .HasForeignKey("ArtId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ArtId");
                 });
 
             modelBuilder.Entity("ann_blog.Models.Photo", b =>

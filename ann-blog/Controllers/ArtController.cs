@@ -21,32 +21,16 @@ namespace ann_blog.Controllers
             _artService = artService;
         }
         // GET: api/Art
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet("{id}")]
+        public List<Art> Get(int id)
         {
-            return new string[] { "value1", "value2" };
+            return _artService.GetAll(id);
         }
 
         // POST: api/Art
-        public HttpResponseMessage Post([FromBody] Art art)
+        public int Post([FromBody] Art art)
         {
-            HttpResponseMessage response = new HttpResponseMessage();
-            List<ArtPhoto> list = new List<ArtPhoto>();
-            var files = HttpContext.Request.Form.Files;
-            if (files.Count > 0)
-            {
-                foreach (IFormFile fil in files)
-                {
-                    using (var ms = new MemoryStream())
-                    {
-                        fil.CopyTo(ms);
-                        var fileBytes = ms.ToArray();
-                        list.Add(new ArtPhoto() {Code = Convert.ToBase64String(fileBytes)});
-                    }
-                }
-            }
-            _artService.Add(art, list);
-            return response;
+            return _artService.Add(art);
         }
 
         // PUT: api/Art/5
@@ -59,6 +43,28 @@ namespace ann_blog.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+        [HttpPost("{id}/UploadFile")]
+        public HttpResponseMessage UploadFile(int id)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            var files = HttpContext.Request.Form.Files;
+            List<ArtPhoto> list = new List<ArtPhoto>();
+            if (files.Count > 0)
+            {
+                foreach (IFormFile fil in files)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        fil.CopyTo(ms);
+                        var fileBytes = ms.ToArray();
+                        list.Add(new ArtPhoto() { Code = Convert.ToBase64String(fileBytes) });
+                    }
+                }
+            }
+            _artService.AddPhotosToArt(list, id);
+
+            return response;
         }
     }
 }

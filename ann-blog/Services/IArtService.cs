@@ -7,8 +7,10 @@ namespace ann_blog.Services
 {
     public interface IArtService
     {
-        void Add(Art art, List<ArtPhoto> photo);
+        List<Art> GetAll(int skip);
+        int Add(Art art);
         void Delete(Art art);
         void Update(Art art);
+        void AddPhotosToArt(List<ArtPhoto> photos, int id);
     }
 }

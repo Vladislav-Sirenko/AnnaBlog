@@ -16,6 +16,7 @@ namespace ann_blog.Services
         }
         public int Add(Trip trip)
         {
+            trip.Date = DateTime.Now;
             _context.Trips.Add(trip);
             _context.SaveChanges();
             return trip.Id;
@@ -23,7 +24,7 @@ namespace ann_blog.Services
 
         public List<Trip> GetAll(int skip)
         {
-            var trips = _context.Trips.Skip(skip).Take(5).ToList();
+            var trips = _context.Trips.OrderByDescending(x => x.Date).Skip(skip).Take(5).ToList();
             foreach (var trip in trips)
             {
                 trip.Photos = _context.TripPhotos.Where(x => x.TripId == trip.Id).ToList();

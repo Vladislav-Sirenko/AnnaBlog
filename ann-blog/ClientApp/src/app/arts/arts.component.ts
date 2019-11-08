@@ -1,13 +1,14 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { TripsService } from '../trips.service';
-import { Trip } from './trip.model';
+import { Art } from './art.model';
+import { ArtsService } from '../arts.service';
 
 @Component({
-  selector: 'app-trips',
-  templateUrl: './trips.component.html',
-  styleUrls: ['./trips.component.css']
+  selector: 'app-arts',
+  templateUrl: './arts.component.html',
+  styleUrls: ['./arts.component.css']
 })
-export class TripsComponent implements OnInit {
+export class ArtsComponent implements OnInit {
+
   @ViewChild('myInput')
   myInputVariable: ElementRef;
   @ViewChild('myInputOne')
@@ -23,11 +24,13 @@ export class TripsComponent implements OnInit {
   fileToUpload2: File = null;
   files: File[] = [];
   thecontents: string;
-  trips: Trip[] = [];
-  itemsToShow: Trip[] = [];
+  trips: Art[] = [];
+  itemsToShow: Art[] = [];
   // No need to call onScroll if full list has already been displayed
   public isFullListDisplayed = false;
-  constructor(private service: TripsService) { }
+
+  constructor(private service: ArtsService) { }
+
 
   ngOnInit() {
     this.service.getAll(0).subscribe(trips => {
@@ -50,7 +53,7 @@ export class TripsComponent implements OnInit {
 
   post() {
     if (this.thecontents) {
-      this.service.postTrip(new Trip(this.thecontents)).subscribe((id: number) => {
+      this.service.postTrip(new Art(this.thecontents)).subscribe((id: number) => {
         if (this.fileToUpload) { this.files.push(this.fileToUpload); }
         if (this.fileToUpload1) { this.files.push(this.fileToUpload1); }
         if (this.fileToUpload2) { this.files.push(this.fileToUpload2); }
@@ -72,4 +75,5 @@ export class TripsComponent implements OnInit {
     });
     this.noOfItemsToShowInitially += this.itemsToLoad;
   }
+
 }
