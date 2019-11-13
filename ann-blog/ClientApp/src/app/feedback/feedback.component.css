@@ -5,10 +5,40 @@
 }
 
 .form-group {
-    background-color: rgba(213, 253, 248, 0.582);
+    background-color: rgba(213, 253, 248, 0.726);
     border-radius: 5px;
     border: none;
+    z-index: 3;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.feedback-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.feedback-container::after {
+    content: "";
+    background: rgba(33, 37, 41, 0.8);
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    border-radius: 4px;
+    bottom: 0;
+    color: #FFF;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.row-feedback {
+    padding-top: 120px;
 }
 
 .btn {

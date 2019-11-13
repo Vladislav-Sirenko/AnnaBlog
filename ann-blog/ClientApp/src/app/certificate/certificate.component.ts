@@ -11,12 +11,16 @@ export class CertificateComponent implements OnInit {
   certificates: Certificate[] = [];
   @ViewChild('myInput')
   myInputVariable: ElementRef;
+  toggle = false;
   fileToUpload: File = null;
   constructor(private service: CertificateService) { }
 
   ngOnInit() {
     this.fileToUpload = null;
     this.getAll();
+  }
+  admin_toggle() {
+    this.toggle = !this.toggle;
   }
   handleFileInput(files: FileList) {
     this.fileToUpload = files.item(0);

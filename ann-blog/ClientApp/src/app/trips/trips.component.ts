@@ -17,7 +17,8 @@ export class TripsComponent implements OnInit {
   private noOfItemsToShowInitially = 5;
   // itemsToLoad - number of new items to be displayed
   private itemsToLoad = 5;
-  private toggle = false;
+  toggle = false;
+  public isFullListDisplayed = false;
   fileToUpload: File = null;
   fileToUpload1: File = null;
   fileToUpload2: File = null;
@@ -26,7 +27,6 @@ export class TripsComponent implements OnInit {
   trips: Trip[] = [];
   itemsToShow: Trip[] = [];
   // No need to call onScroll if full list has already been displayed
-  public isFullListDisplayed = false;
   constructor(private service: TripsService) { }
 
   ngOnInit() {

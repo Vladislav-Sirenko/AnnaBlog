@@ -10,8 +10,8 @@ export class NavigationComponent implements OnInit {
   constructor(private roouter: Router) { }
 
   element: HTMLElement;
-  private toogle = false;
-  private toglesubMenu = false;
+  toogle = false;
+  toglesubMenu = false;
 
   ngOnInit() {
   }

@@ -20,7 +20,7 @@
 
 
 
-<div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [infiniteScrollDisabled]="isFullListDisplayed" [scrollWindow]="false">
+<div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [infiniteScrollDisabled]="false" [scrollWindow]="false">
     <div *ngFor="let item of itemsToShow" class="container-fluide picture-container">
         <div class="container">
 

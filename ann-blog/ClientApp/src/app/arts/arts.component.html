@@ -1,3 +1,7 @@
+<div class="">
+
+</div>
+
 <div class="title">
     <p class="trips-title">
         MY ART
@@ -16,8 +20,6 @@
             <textarea [(ngModel)]="thecontents" rows="7" cols="55"></textarea>
             <label for="file"><h5>Загрузить Фото</h5></label>
             <input #myInput type="file" class="input" id="file" (change)="handleFileInput($event.target.files)">
-            <input #myInputOne type="file" class="input" id="file" (change)="handleFileInput1($event.target.files)">
-            <input #myInputTwo type="file" class="input" id="file" (change)="handleFileInput2($event.target.files)">
             <button class="btn btn-success mt-3 ml-2" (click)="post()" [disabled]="!fileToUpload">Создать</button>
     </div>
 </div>
@@ -28,18 +30,16 @@
 
     <div class="container">
         <div *ngFor="let item of itemsToShow" class="container-fluide picture-container">
-            <div class="row  ">
+            <div class="row mt-3 mb-5">
 
-                <div class="col-md-3">
-                    <div *ngFor="let photo of item.photos" class="item">
-                        <div class="picture">
-
-                            <img src="data:image/jpeg;base64,{{photo.code}}" style="width:100%;height: 100%;">
-                        </div>
-
+                <div *ngFor="let photo of item.photos" class="col-md-4 picture-box">
+                    <div class="picture stack">
+                        <img src="data:image/jpeg;base64,{{photo.code}}" style="width:100%;height: 100%;">
                     </div>
+
                 </div>
-                <!-- <div class="col-md-6">
+
+                <div class="col-md-8 mt-5 mb-5">
                     <div class="about-picture">
 
                         <p>
@@ -49,7 +49,7 @@
                             <p class="about-picture-date">{{ item.date ? item.date.split('T')[0] + ' ' + item.date.split('T')[1].substring(0,8) : ''}}</p>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
     </div>

@@ -1,7 +1,6 @@
 <div class="navigatin-box">
     <div class="menu-box">
-
-        <a class="burger-btn" id="burger-btn" (click)="toggleElement()"> <i class="fa fa-bars fa-3x " aria-hidden="true"></i></a>
+        <a [ngClass]="{'burger-btn-inverse': toogle }" class="burger-btn" id="burger-btn" (click)="toggleElement()"> <i class="fa fa-bars fa-3x " aria-hidden="true"></i></a>
     </div>
 
 </div>
@@ -14,6 +13,9 @@
         <div class="menu-item" routerLink="/feedBack" (click)="toggleElement()">
             <p class="item-text"> Познайомимось</p>
         </div>
+        <div class="menu-item" routerLink="/certificate" (click)="toggleElement()">
+            <p class=" item-text ">Сертифікати</p>
+        </div>
         <div class="menu-item" (click)="toggleElement()">
             <p class=" item-text ">Контакти</p>
         </div>
@@ -23,7 +25,7 @@
             </p>
         </div>
         <div *ngIf="toglesubMenu" class="menu-item" routerLink="/arts" (click)="toggleElement()">
-            <p class="item-text ml-5">Рисование<i class="fa fa-home" aria-hidden="true"></i></p>
+            <p class="item-text ml-5">Рисование</p>
         </div>
         <div *ngIf="toglesubMenu" class="menu-item" routerLink="/trips" (click)="toggleElement()">
             <p class="item-text ml-5"> Путешествия</p>

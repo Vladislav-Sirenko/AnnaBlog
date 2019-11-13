@@ -1,6 +1,6 @@
 <div class="title">
     <p class="trips-title">
-        MY TRIPS
+        МОЇ ПОДОРОЖІ
     </p>
 </div>
 <div class="admin-toggle" (click)="admin_toggle()">
@@ -27,14 +27,13 @@
 <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [infiniteScrollDisabled]="isFullListDisplayed" [scrollWindow]="false">
     <div *ngFor="let item of itemsToShow" class="container-fluide picture-container">
         <div class="container">
-
             <div class="row mt-5 mb-5 justify-content-center">
-                <div class="col-md-6">
-                    <div *ngFor="let photo of item.photos" class="item">
-                        <img src="data:image/jpeg;base64,{{photo.code}}" style="width:100%;">
+                <div *ngFor="let photo of item.photos" class="col-md-4 mt-3 mb-5">
+                    <div class="picture-container stack">
+                        <img class=" picture" src="data:image/jpeg;base64,{{photo.code}}" style="width:100%;">
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12 ">
                     <div class="about-picture">
                         <p class="about-picture-text">
                             {{item.data}}
