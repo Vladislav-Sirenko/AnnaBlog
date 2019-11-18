@@ -3,28 +3,30 @@
         Admin
     </div>
 </div>
-<div class="container " align="center">
-    <div class="title">
-        <h2>МОЇ СЕРТИФІКАТИ</h2>
-    </div>
-    <div class="row d-flex justify-content-center ">
-        <div *ngFor="let item of certificates" class="col-md-4 photo-container  mb-3">
-            <div class="photo-container-box  text-center ">
-                <img class="img img-box" src="data:image/jpeg;base64,{{item.code}}" alt="New york">
-                <figcaption class="mt-2">СЕРТІФИКАТ </figcaption>
-                <button class="btn btn-warning" (click)="remove(item.id)">видалити</button>
+<div class="main-container">
+    <div class="container " align="center">
+        <div class="title">
+            <h2>МОЇ СЕРТИФІКАТИ</h2>
+        </div>
+        <div class="row d-flex justify-content-center ">
+            <div *ngFor="let item of certificates" class="col-md-4 photo-container  mb-3">
+                <div class="photo-container-box  text-center ">
+                    <img class="img img-box " src="data:image/jpeg;base64,{{item.code}}" alt="New york">
+                    <figcaption class="mt-2 ">СЕРТІФИКАТ </figcaption>
+                    <button class="btn btn-warning " (click)="remove(item.id)">видалити</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div *ngIf="toggle" class="form-control-div">
-    <div class="form-group-admin-panel ">
-        <h3>Admin-panel</h3>
+    <div *ngIf="toggle" class="form-control-div">
+        <div class="form-group-admin-panel ">
+            <h3>Admin-panel</h3>
 
-        <Br>
-        <label for="file">Добавте сертификат</label>
-        <input #myInput type="file" id="file" (change)="handleFileInput($event.target.files)">
-        <button class="btn btn-success mt-3 ml-2" (click)="postFile()" [disabled]="!fileToUpload">Создать</button>
+            <Br>
+            <label for="file" class="ml-2">Добавте сертификат</label>
+            <input #myInput type="file" id="file" class="ml-2" (change)="handleFileInput($event.target.files)">
+            <button class="btn btn-success mt-3 ml-2" (click)="postFile()" [disabled]="!fileToUpload">Создать</button>
+        </div>
     </div>
 </div>

@@ -9,15 +9,23 @@
     border-radius: 5px;
     border: none;
     z-index: 3;
+    ;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .feedback-container {
     position: fixed;
+    overflow: auto;
     top: 0;
     left: 0;
-    height: 100%;
     width: 100%;
+    height: 100vh;
+}
+
+.container {
+    min-height: 100vh;
+    height: auto;
+    padding-bottom: 50px;
 }
 
 .feedback-container::after {
@@ -39,6 +47,8 @@
 
 .row-feedback {
     padding-top: 120px;
+    padding-bottom: 150px;
+    overflow: auto;
 }
 
 .btn {

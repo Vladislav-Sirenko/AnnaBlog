@@ -1,45 +1,49 @@
-<div class="title">
-    <p class="trips-title">
-        МОЇ ПОДОРОЖІ
-    </p>
-</div>
-<div class="admin-toggle" (click)="admin_toggle()">
-    <div class="btn btn-primary">
-        Admin
+<div class="main-container">
+
+
+    <div class="title">
+        <p class="trips-title">
+            МОЇ ПОДОРОЖІ
+        </p>
     </div>
-</div>
-<div *ngIf="toggle" class="form-control-div">
-    <div class="form-group-admin-panel ">
-        <h3>Admin-panel</h3>
-        <p><b>Текст:</b>
-            <Br>
-            <textarea [(ngModel)]="thecontents" rows="7" cols="55"></textarea>
-            <label for="file"><h5>Загрузить Фото</h5></label>
-            <input #myInput type="file" class="input mt-3" id="file" (change)="handleFileInput($event.target.files)">
-            <input #myInputOne type="file" class="input mt-3" id="file" (change)="handleFileInput1($event.target.files)">
-            <input #myInputTwo type="file" class="input mt-3" id="file" (change)="handleFileInput2($event.target.files)">
-            <button class="btn btn-success mt-3 ml-2" (click)="post()" [disabled]="!fileToUpload">Создать</button>
+    <div class="admin-toggle" (click)="admin_toggle()">
+        <div class="btn btn-primary">
+            Admin
+        </div>
     </div>
-</div>
+    <div *ngIf="toggle" class="form-control-div">
+        <div class="form-group-admin-panel ">
+            <h3>Admin-panel</h3>
+            <p><b>Текст:</b>
+                <Br>
+                <textarea [(ngModel)]="thecontents" rows="7" cols="55"></textarea>
+                <label for="file"><h5>Загрузить Фото</h5></label>
+                <input #myInput type="file" class="input mt-3" id="file" (change)="handleFileInput($event.target.files)">
+                <input #myInputOne type="file" class="input mt-3" id="file" (change)="handleFileInput1($event.target.files)">
+                <input #myInputTwo type="file" class="input mt-3" id="file" (change)="handleFileInput2($event.target.files)">
+                <button class="btn btn-success mt-3 ml-2" (click)="post()" [disabled]="!fileToUpload">Создать</button>
+        </div>
+    </div>
 
 
 
-<div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [infiniteScrollDisabled]="isFullListDisplayed" [scrollWindow]="false">
-    <div *ngFor="let item of itemsToShow" class="container-fluide picture-container">
-        <div class="container">
-            <div class="row mt-5 mb-5 justify-content-center">
-                <div *ngFor="let photo of item.photos" class="col-md-4 mt-3 mb-5">
-                    <div class="picture-container stack">
-                        <img class=" picture" src="data:image/jpeg;base64,{{photo.code}}" style="width:100%;">
+    <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [infiniteScrollDisabled]="isFullListDisplayed" [scrollWindow]="false">
+        <div *ngFor="let item of itemsToShow" class="container-fluide picture-container">
+            <div class="container">
+                <div class="row mt-5 mb-5 justify-content-center">
+                    <div *ngFor="let photo of item.photos" class="col-md-4 mt-3 mb-5">
+                        <div class="picture-container stack">
+                            <img class=" picture" src="data:image/jpeg;base64,{{photo.code}}" style="width:100%;">
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-12 ">
-                    <div class="about-picture">
-                        <p class="about-picture-text">
-                            {{item.data}}
-                        </p>
-                        <div class="about-picture-date">
-                            <p>{{ item.date ? item.date.split('T')[0] + ' ' + item.date.split('T')[1].substring(0,8) : ''}}</p>
+                    <div class="col-md-12 ">
+                        <div class="about-picture">
+                            <p class="about-picture-text">
+                                {{item.data}}
+                            </p>
+                            <div class="about-picture-date">
+                                <p>{{ item.date ? item.date.split('T')[0] + ' ' + item.date.split('T')[1].substring(0,8) : ''}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>

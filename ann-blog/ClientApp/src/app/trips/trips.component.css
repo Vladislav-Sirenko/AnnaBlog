@@ -1,6 +1,17 @@
+.main-container {
+    min-height: 100vh;
+    width: 100%;
+    height: auto;
+    background-image: linear-gradient(to right top, #a9f2f2af, #98efefa4, #85ededc9, #70eaeacc, #56e7e7b9);
+    margin: 0;
+    padding-bottom: 50px;
+}
+
 .search-results {
     height: 1000px;
+    border-top: 5px solid rgb(247, 247, 247);
     overflow: scroll;
+    background-image: linear-gradient(to right top, #79dfdf, #6acbd7, #61b6cc, #5da1bf, #5b8daec0);
     z-index: 12;
     font-family: 'Caveat', cursive;
 }
@@ -14,9 +25,9 @@
 }
 
 .trips-title {
-    font-size: 1.5em;
+    font-size: 1.9em;
     font-weight: 800;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
 }
 
 .form-control-div {
@@ -33,11 +44,12 @@
     padding-top: 80px;
     flex-direction: column;
     width: 350px;
+    color: white;
     padding-left: 5px;
     height: 100vh;
     top: 0;
     right: 0;
-    background-image: linear-gradient(to right bottom, #a3ebf6, #98e3ea, #8ddadd, #83d2d0, #7ac9c3);
+    background-image: linear-gradient(to right top, #1c7878, #006b78, #005e75, #005070, #0a4267);
     display: flex;
 }
 
@@ -123,8 +135,8 @@
 
 .about-picture {
     position: relative;
-    border: 3px solid rgb(255, 255, 255);
-    background-image: linear-gradient(to top, #7fcff9, #6cc8f1, #57c2e8, #3ebbdf, #19b4d5);
+    border: 3px solid rgb(1, 28, 70);
+    background-image: linear-gradient(to right top, #37f2f2, #00d6ef, #00bae7, #009dd9, #2092df);
     padding-top: 30px;
     ;
     min-height: 300px;
