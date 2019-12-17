@@ -28,4 +28,7 @@ export class TripsService {
   getAll(skip: number) {
     return this._http.get<Trip[]>(this._baseUrl + 'api/Trip/' + skip);
   }
+  removeTrip(id: number) {
+    return this._http.delete(this._baseUrl + 'api/Trip/' + id);
+  }
 }

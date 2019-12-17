@@ -1,0 +1,16 @@
+.main-container {
+    width: 100%;
+    background-color: rgba(119, 158, 145, 0.815);
+}
+
+.main-container-box {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}

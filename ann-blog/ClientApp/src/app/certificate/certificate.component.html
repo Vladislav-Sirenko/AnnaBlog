@@ -1,19 +1,22 @@
-<div class="admin-toggle" (click)="admin_toggle()">
+<div *ngIf="admin" class="admin-toggle" (click)="admin_toggle()">
     <div class="btn btn-primary">
         Admin
     </div>
 </div>
 <div class="main-container">
     <div class="container " align="center">
+
         <div class="title">
-            <h2>МОЇ СЕРТИФІКАТИ</h2>
+            <p class="trips-title">
+                СЕРТИФІКАТИ
+            </p>
         </div>
         <div class="row d-flex justify-content-center ">
             <div *ngFor="let item of certificates" class="col-md-4 photo-container  mb-3">
                 <div class="photo-container-box  text-center ">
                     <img class="img img-box " src="data:image/jpeg;base64,{{item.code}}" alt="New york">
                     <figcaption class="mt-2 ">СЕРТІФИКАТ </figcaption>
-                    <button class="btn btn-warning " (click)="remove(item.id)">видалити</button>
+                    <button *ngIf="admin" class="btn btn-warning " (click)="remove(item.id)">видалити</button>
                 </div>
             </div>
         </div>

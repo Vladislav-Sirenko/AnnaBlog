@@ -10,7 +10,7 @@
         <div class="menu-item" routerLink="/" (click)="toggleElement()">
             <p class="item-text">Головна<i class="fa fa-home" aria-hidden="true"></i></p>
         </div>
-        <div class="menu-item" routerLink="/feedBack" (click)="toggleElement()">
+        <div class="menu-item" routerLink="/about" (click)="toggleElement()">
             <p class="item-text"> Познайомимось</p>
         </div>
         <div class="menu-item" routerLink="/certificate" (click)="toggleElement()">
@@ -19,29 +19,30 @@
         <div class="menu-item" routerLink="/services" (click)="toggleElement()">
             <p class=" item-text ">Послуги</p>
         </div>
-        <div class="menu-item" (click)="toggleElement()">
-            <p class=" item-text ">Контакти</p>
-        </div>
+
         <div class="menu-item " (click)="toggleSubMenu()">
             <p class="item-text ">Блог <i *ngIf="!toglesubMenu" class="fa fa-chevron-down " aria-hidden="true"></i>
                 <i *ngIf="toglesubMenu" class="fa fa-chevron-up " aria-hidden="true"></i>
             </p>
         </div>
         <div *ngIf="toglesubMenu" class="menu-item" routerLink="/arts" (click)="toggleElement()">
-            <p class="item-text ml-5">Рисование</p>
+            <p class="item-text ml-5">Малюнки</p>
         </div>
         <div *ngIf="toglesubMenu" class="menu-item" routerLink="/trips" (click)="toggleElement()">
-            <p class="item-text ml-5"> Путешествия</p>
+            <p class="item-text ml-5"> Прогулянки</p>
         </div>
         <div *ngIf="toglesubMenu" class="menu-item" routerLink="/posts" (click)="toggleElement()">
-            <p class="item-text ml-5"> Стихи</p>
+            <p class="item-text ml-5"> Вірші</p>
+        </div>
+        <div class="menu-item" (click)="toggleElement()">
+            <p class=" item-text ">Контакти</p>
         </div>
     </div>
 
 
 </div>
 <div class="social-media social-liks ">
-    <a class="social-links-i "><i class="fa fa-instagram fa-2x ml-3 mr-3 " aria-hidden="true "></i></a>
-    <a class="social-links-i "><i class="fa fa-facebook fa-2x ml-3  mr-3 " aria-hidden="true "></i></a>
+    <a class="social-links-i " href="https://instagram.com/annatim_lifecoach?igshid=ioh9t7fkhp8i"><i class="fa fa-instagram fa-2x ml-3 mr-3 " aria-hidden="true "></i></a>
+    <a class="social-links-i " href="https://www.facebook.com/anna.timachova"><i class="fa fa-facebook fa-2x ml-3  mr-3 " aria-hidden="true "></i></a>
     <a class="social-links-i "><i class="fa fa-paper-plane fa-2x ml-3 mr-3 " aria-hidden="true "></i></a>
 </div>

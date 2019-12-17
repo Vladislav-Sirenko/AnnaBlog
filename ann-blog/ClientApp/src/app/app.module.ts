@@ -25,6 +25,9 @@ import { ArtsComponent } from './arts/arts.component';
 import { ArtsService } from './arts.service';
 import { PostsComponent } from './posts/posts.component';
 import { PostsService } from './posts.service';
+import { AdminComponent } from './admin/admin.component';
+import { PreloaderComponent } from './preloader/preloader.component';
+import { UserService } from './user.service';
 
 
 @NgModule({
@@ -44,7 +47,9 @@ import { PostsService } from './posts.service';
     CertificateComponent,
     TripsComponent,
     ArtsComponent,
-    PostsComponent
+    PostsComponent,
+    AdminComponent,
+    PreloaderComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -63,13 +68,14 @@ import { PostsService } from './posts.service';
       { path: 'posts', component: PostsComponent },
       { path: 'feedBack', component: FeedbackComponent },
       { path: 'certificate', component: CertificateComponent },
+      { path: 'blog-admin', component: AdminComponent },
       { path: '**', component: NotFoundComponent },
 
     ]),
     InfiniteScrollModule,
 
   ],
-  providers: [ContactService, CertificateService, TripsService, ArtsService, PostsService],
+  providers: [ContactService, CertificateService, TripsService, ArtsService, PostsService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -23,9 +23,11 @@ namespace ann_blog.Services
             return post.Id;
         }
 
-        public void Delete(Post art)
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var trip = _context.Posts.FirstOrDefault(x => x.Id == id);
+            _context.Posts.Remove(trip);
+            _context.SaveChanges();
         }
 
         public void Update(Post art)

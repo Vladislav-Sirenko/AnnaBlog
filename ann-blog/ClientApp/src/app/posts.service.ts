@@ -10,6 +10,9 @@ export class PostsService {
   constructor(private _http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     this._baseUrl = baseUrl;
   }
+  removeTrip(id: number) {
+    return this._http.delete(this._baseUrl + 'api/Post/' + id);
+  }
 
   postTrip(post: Post) {
     post.id = 0;

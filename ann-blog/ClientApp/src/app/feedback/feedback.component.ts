@@ -8,6 +8,8 @@ import { FeedbackModel } from '../feedbackModel.model';
   styleUrls: ['./feedback.component.css']
 })
 export class FeedbackComponent implements OnInit {
+  public close_form = false;
+  public show_form = false;
   email: string;
   phone: string;
   text: string;
@@ -16,11 +18,13 @@ export class FeedbackComponent implements OnInit {
   ngOnInit() {
   }
   sendFeedback() {
+    this.close_form = !this.close_form;
     this.service.sendFeedback(new FeedbackModel(this.email, this.phone, this.text)).subscribe(() => {
       this.email = '';
       this.phone = '';
       this.text = '';
-      alert('Ваш отзыв успешно оставлен');
+      this.show_form = !this.show_form;
+      // alert('Ваш отзыв успешно оставлен');
     });
 
   }

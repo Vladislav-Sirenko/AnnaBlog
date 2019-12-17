@@ -1,19 +1,35 @@
 <div class="feedback-container">
 
 
-    <div class="container">
+    <div *ngIf="!close_form" class="container">
+
         <div class="row justify-content-center row-feedback">
             <div class="col-md-4 p-5 form-group">
-
-
+                <div class="close " routerLink="/" (click)="close_form=true">
+                    <p>close</p>
+                </div>
                 <label for="InputEmail">E-mail</label>
                 <input [(ngModel)]="email" type="email" class="form-control mt-3 mb-3" placeholder="exampl@gmail.com" id="InputEmail" />
                 <label for="exampleFormControlTextarea4">Про що бажаєте поговорити?</label>
                 <textarea [(ngModel)]="text" class="form-control mt-3 mb-3" id="exampleFormControlTextarea4" rows="3"></textarea>
                 <label for="InputPhone">Телефон</label>
                 <input type="tel" [(ngModel)]="phone" class="form-control mt-3 mb-3" placeholder="Ваш номер телефону" id="InputPhone" />
-                <button (click)="sendFeedback()" class="btn btn-info mt-5" align="right">НАДIСЛАТИ</button>
+                <button *ngIf="email && text && phone" (click)="sendFeedback()" class="btn btn-info mt-5" align="right">НАДIСЛАТИ</button>
+                <div *ngIf="!email || !text || !phone" class="border bg-light " align="center">Заповніть всі поля будь-ласка</div>
             </div>
         </div>
     </div>
+
+    <div *ngIf="show_form" class="showThanks">
+        <div class="thank-u ">
+            <p class="text-center text-inside">
+                Ваше повідомлення успішно надіслано,дякую!
+
+            </p>
+            <div class="btn btn-success mt-3" routerLink="/" (click)="show_form=false">
+                Продовжити
+            </div>
+        </div>
+    </div>
+
 </div>

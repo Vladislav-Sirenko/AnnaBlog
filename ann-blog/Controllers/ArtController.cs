@@ -43,6 +43,7 @@ namespace ann_blog.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            _artService.Delete(id);
         }
         [HttpPost("{id}/UploadFile")]
         public HttpResponseMessage UploadFile(int id)

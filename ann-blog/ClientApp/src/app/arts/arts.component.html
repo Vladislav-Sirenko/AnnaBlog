@@ -4,53 +4,62 @@
 
     <div class="title">
         <p class="trips-title">
-            MY ART
+            МОЇ МАЛЮНКИ
         </p>
+
     </div>
-    <div class="admin-toggle" (click)="admin_toggle()">
-        <div class="btn btn-primary">
+    <div *ngIf="admin" class="admin-toggle " (click)="admin_toggle() ">
+        <div class="btn btn-primary ">
             Admin
         </div>
     </div>
-    <div *ngIf="toggle" class="form-control-div">
+    <div *ngIf="toggle " class="form-control-div ">
         <div class="form-group-admin-panel ">
             <h3>Admin-panel</h3>
+            <label for="title"><h5>Заглавие:</h5></label>
+            <input [(ngModel)]="title" type="text" id="title">
             <p><b>Текст:</b>
                 <Br>
-                <textarea [(ngModel)]="thecontents" rows="7" cols="55"></textarea>
-                <label for="file"><h5>Загрузить Фото</h5></label>
-                <input #myInput type="file" class="input" id="file" (change)="handleFileInput($event.target.files)">
-                <button class="btn btn-success mt-3 ml-2" (click)="post()" [disabled]="!fileToUpload">Создать</button>
+                <textarea [(ngModel)]="thecontents " rows="7 " cols="55 "></textarea>
+                <label for="file "><h5>Загрузить Фото</h5></label>
+                <input #myInput type="file " class="input " id="file " (change)="handleFileInput($event.target.files) ">
+                <button class="btn btn-success mt-3 ml-2 " (click)="post() " [disabled]="!fileToUpload ">Создать</button>
         </div>
     </div>
 
+    <div *ngIf="preloader ">
+        <div class="container spinner ">
+            <app-preloader></app-preloader>
+        </div>
+    </div>
 
+    <div class="search-results " infiniteScroll [infiniteScrollDistance]="2 " [infiniteScrollThrottle]="50 " (scrolled)="onScroll() " [infiniteScrollDisabled]="isFullListDisplayed " [scrollWindow]="false ">
 
-    <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [infiniteScrollDisabled]="isFullListDisplayed" [scrollWindow]="false">
+        <div class="container ">
+            <div *ngFor="let item of itemsToShow " class="container-fluide picture-container ">
+                <div class="row mt-3 mb-5 ">
 
-        <div class="container">
-            <div *ngFor="let item of itemsToShow" class="container-fluide picture-container">
-                <div class="row mt-3 mb-5">
-
-                    <div *ngFor="let photo of item.photos" class="col-md-4 picture-box">
-                        <div class="picture stack">
-                            <img src="data:image/jpeg;base64,{{photo.code}}" style="width:100%;height: 100%;">
+                    <div *ngFor="let photo of item.photos " class="col-md-4 picture-box ">
+                        <div class="picture stack ">
+                            <img src="data:image/jpeg;base64,{{photo.code}} " style="width:100%;height: 100%; ">
                         </div>
 
                     </div>
 
-                    <div class="col-md-8  mb-5">
-                        <div class="about-picture">
+                    <div class="col-md-8 mb-5 ">
+                        {{item.title}}
+                        <div class="about-picture ">
 
                             <p>
                                 {{item.data}}
                             </p>
                             <div>
-                                <p class="about-picture-date">{{ item.date ? item.date.split('T')[0] + ' ' + item.date.split('T')[1].substring(0,8) : ''}}</p>
+                                <p class="about-picture-date ">{{ item.date ? item.date.split('T')[0] + ' ' + item.date.split('T')[1].substring(0,8) : ''}}</p>
                             </div>
                         </div>
                     </div>
                 </div>
+                <button (click)="remove(item.id)" *ngIf="admin">Видалити</button>
             </div>
         </div>
     </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Certificate } from './certificate.model';
 import { CertificateService } from '../certificate.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-certificate',
@@ -12,10 +13,16 @@ export class CertificateComponent implements OnInit {
   @ViewChild('myInput')
   myInputVariable: ElementRef;
   toggle = false;
+  admin: boolean;
   fileToUpload: File = null;
-  constructor(private service: CertificateService) { }
+  constructor(private service: CertificateService, private authService: UserService) { }
 
   ngOnInit() {
+    if (localStorage.getItem('email') && localStorage.getItem('password')) {
+      this.authService.checkAdmin().subscribe((isAdmin: boolean) => {
+        this.admin = isAdmin;
+      });
+    }
     this.fileToUpload = null;
     this.getAll();
   }

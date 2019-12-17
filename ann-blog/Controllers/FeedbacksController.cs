@@ -20,7 +20,7 @@ namespace ann_blog.Controllers
     {
         private readonly IEmailService _emailService;
 
-        public FeedbacksController(IEmailService emailService, ICertificateService certificateService)
+        public FeedbacksController(IEmailService emailService)
         {
             _emailService = emailService;
         }

@@ -24,7 +24,7 @@ namespace ann_blog.Services
 
         public List<Trip> GetAll(int skip)
         {
-            var trips = _context.Trips.OrderByDescending(x => x.Date).Skip(skip).Take(5).ToList();
+            var trips = _context.Trips.OrderByDescending(x => x.Date).Skip(skip).Take(3).ToList();
             foreach (var trip in trips)
             {
                 trip.Photos = _context.TripPhotos.Where(x => x.TripId == trip.Id).ToList();
@@ -32,9 +32,13 @@ namespace ann_blog.Services
             return trips;
         }
 
-        public void Delete(Trip art)
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var photos = _context.TripPhotos.Where(x => x.TripId == id);
+            _context.TripPhotos.RemoveRange(photos);
+            var trip = _context.Trips.FirstOrDefault(x => x.Id == id);
+            _context.Trips.Remove(trip);
+            _context.SaveChanges();
         }
 
         public void Update(Trip art)

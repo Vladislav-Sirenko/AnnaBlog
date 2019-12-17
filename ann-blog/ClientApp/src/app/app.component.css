@@ -7,11 +7,11 @@
 
 .container-fluid {
     /* background-color: rgba(253, 224, 57, 0.603); */
-    background: url(../assets/img/ann_blog9.jpg)no-repeat;
+    background: url('../assets/img/ann_blog9.jpg')no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     background-position: center center;
     background-repeat: no-repeat;
-    height: 100%;
     padding: 0;
     /* background-color: rgba(248, 211, 4, 0.733); */
     min-height: 100vh;

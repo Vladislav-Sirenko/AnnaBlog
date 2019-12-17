@@ -8,7 +8,7 @@ namespace ann_blog.Services
     public interface ITripService
     {
         int Add(Trip art);
-        void Delete(Trip art);
+        void Delete(int id);
         void Update(Trip art);
         void AddPhotosToTrip(List<TripPhoto> photo,int id);
         List<Trip> GetAll(int skip);

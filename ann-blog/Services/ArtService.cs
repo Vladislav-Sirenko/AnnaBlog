@@ -33,9 +33,13 @@ namespace ann_blog.Services
             return arts;
         }
 
-        public void Delete(Art art)
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var photos = _context.ArtPhotos.Where(x => x.ArtId == id);
+            _context.ArtPhotos.RemoveRange(photos);
+            var trip = _context.Arts.FirstOrDefault(x => x.Id == id);
+            _context.Arts.Remove(trip);
+            _context.SaveChanges();
         }
 
         public void Update(Art art)

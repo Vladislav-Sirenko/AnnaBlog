@@ -1,10 +1,19 @@
 .main-container {
-    background-image: linear-gradient(to right top, #a9f2f2af, #98efefa4, #85ededc9, #70eaeacc, #56e7e7b9);
+    background-color: rgba(213, 253, 248, 0.726);
 }
 
 .search-results {
     height: 1000px;
     overflow: scroll;
+}
+
+textarea {
+    color: black
+}
+
+.spinner {
+    display: flex;
+    justify-content: center;
 }
 
 .title {
@@ -16,9 +25,10 @@
 }
 
 .trips-title {
-    font-size: 1.5em;
-    font-weight: 800;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Amatic SC', cursive;
+    letter-spacing: 1px;
+    font-size: 2em;
+    font-weight: 900;
 }
 
 .form-control-div {
@@ -36,9 +46,10 @@
     flex-direction: column;
     width: 350px;
     height: 100vh;
+    color: white;
     top: 0;
     right: 0;
-    background-color: aquamarine;
+    background-image: linear-gradient(to right top, #1c7878, #006b78, #005e75, #005070, #0a4267);
     display: flex;
 }
 

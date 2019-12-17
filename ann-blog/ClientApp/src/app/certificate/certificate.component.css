@@ -1,7 +1,7 @@
 .main-container {
     min-height: 100vh;
     height: auto;
-    background-image: linear-gradient(to right top, #a9f2f2af, #98efefa4, #85ededc9, #70eaeacc, #56e7e7b9);
+    background-color: rgba(213, 253, 248, 0.726);
     margin: 0;
     padding-bottom: 50px;
 }
@@ -146,11 +146,12 @@ figcaption {
     z-index: 11;
     padding-top: 80px;
     flex-direction: column;
+    color: white;
     width: 350px;
     height: 100vh;
     top: 0;
     right: 0;
-    background-color: aquamarine;
+    background-image: linear-gradient(to right top, #1c7878, #006b78, #005e75, #005070, #0a4267);
     display: flex;
 }
 
@@ -161,10 +162,21 @@ figcaption {
     z-index: 12;
 }
 
+textarea {
+    color: black
+}
+
 .title {
-    height: 180px;
+    width: 100%;
+    height: 200px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin-bottom: 0;
+    justify-content: center;
+}
+
+.trips-title {
+    font-family: 'Amatic SC', cursive;
+    letter-spacing: 1px;
+    font-size: 2em;
+    font-weight: 900;
 }

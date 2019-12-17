@@ -27,5 +27,7 @@ export class ArtsService {
   getAll(skip: number) {
     return this._http.get<Art[]>(this._baseUrl + 'api/Art/' + skip);
   }
-
+  removeTrip(id: number) {
+    return this._http.delete(this._baseUrl + 'api/Art/' + id);
+  }
 }

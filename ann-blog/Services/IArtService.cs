@@ -9,7 +9,7 @@ namespace ann_blog.Services
     {
         List<Art> GetAll(int skip);
         int Add(Art art);
-        void Delete(Art art);
+        void Delete(int id);
         void Update(Art art);
         void AddPhotosToArt(List<ArtPhoto> photos, int id);
     }

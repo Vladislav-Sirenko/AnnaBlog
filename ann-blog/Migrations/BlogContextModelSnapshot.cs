@@ -46,6 +46,8 @@ namespace annblog.Migrations
 
                     b.Property<DateTime>("Date");
 
+                    b.Property<string>("Title");
+
                     b.HasKey("Id");
 
                     b.ToTable("Arts");
@@ -91,6 +93,8 @@ namespace annblog.Migrations
 
                     b.Property<DateTime>("Date");
 
+                    b.Property<string>("Title");
+
                     b.HasKey("Id");
 
                     b.ToTable("Posts");
@@ -105,6 +109,8 @@ namespace annblog.Migrations
                     b.Property<string>("Data");
 
                     b.Property<DateTime>("Date");
+
+                    b.Property<string>("Title");
 
                     b.HasKey("Id");
 

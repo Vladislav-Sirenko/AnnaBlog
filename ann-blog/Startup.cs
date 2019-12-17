@@ -35,6 +35,7 @@ namespace ann_blog
             services.AddTransient<ITripService, TripService>();
             services.AddTransient<ICertificateService, CertificateService>();
             services.AddTransient<IArtService, ArtService>();
+            services.AddTransient<IUserService, UserService>();
             services.AddTransient<IPostService, PostService>();
             services.AddDbContext<BlogContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
